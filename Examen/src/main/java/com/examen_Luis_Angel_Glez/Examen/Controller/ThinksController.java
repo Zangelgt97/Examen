@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +26,7 @@ import com.examen_Luis_Angel_Glez.Examen.Exception.Mensaje;
 
 @RestController
 @RequestMapping("/Examen")
-public ThinksController {
+public class ThinksController {
 
 	@Autowired
 	private	ThinksService thinksservice;
@@ -34,7 +34,7 @@ public ThinksController {
 	
 	@GetMapping("/Find_All")
 	public ResponseEntity<?> getAll() {
-		List<Tinks> lista = thinksservice.getAll();
+		List<Thinks> lista = thinksservice.getAll();
 		if(lista.isEmpty()){
 			return new ResponseEntity<>(new Mensaje("Sin cosas en la Base de Datos"), HttpStatus.BAD_REQUEST);
 		}
@@ -44,7 +44,7 @@ public ThinksController {
 
 	@GetMapping("/Find_By_id/{id}")
 	public ResponseEntity<Thinks> getbyId(@PathVariable long id) {
-		return ResponseEntity.ok().body(thinksservice.getbyId(id));
+		return ResponseEntity.ok().body(thinksservice.getById(id));
 	
 	}
 	
@@ -65,7 +65,7 @@ public ThinksController {
 	
 	@DeleteMapping("/Delete/{id}")
 	public HttpStatus delete(@PathVariable long id) {
-		this.thinksservice.delete(id);
+		this.thinksservice.deleteThinks(id);
 		return HttpStatus.OK;
 	}
 }
