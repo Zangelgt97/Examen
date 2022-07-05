@@ -14,3 +14,4 @@ import com.examen_Luis_Angel_Glez.Examen.Model.Thinks;
 public interface ThinksRepository extends JpaRepository<Thinks, Long> {
 	// Con @Repository le indico los metodos principales select, create, update, delete
 }
+

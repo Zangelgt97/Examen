@@ -23,13 +23,6 @@ public class Thinks {
 	@Column(name = "name")
 	private String name;
 
-	
-
-    @CreationTimestamp
-    private Date createdAt;//Fecha en que se dio de alta el producto en la BD
-    
-    @CreationTimestamp
-    private Date updatedAt;//Fecha en que se actualizo el producto
 
 	public long getId() {
 		return id;
@@ -47,19 +40,4 @@ public class Thinks {
 		this.name = name;
 	}
 
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
 }
