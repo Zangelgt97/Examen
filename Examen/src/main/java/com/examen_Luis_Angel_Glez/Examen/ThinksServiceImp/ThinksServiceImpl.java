@@ -8,64 +8,64 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.springboot.app.exception.ResourceNotFoundException;
-import com.example.springboot.app.model.Product;
-import com.example.springboot.app.repository.ProductRepository;
+import com.examen_Luis_Angel_Glez.Examen.Model.Thinks;
+//import com.example.springboot.app.exception.ResourceNotFoundException;
+import com.examen_Luis_Angel_Glez.Examen.repository.ThinksRepository;
+import com.examen_Luis_Angel_Glez.Examen.ThinksServiceImp.ThinksService;
+import com.examen_Luis_Angel_Glez.Examen.Exception.ResourceNotFoundException;
 
 @Service 
 @Transactional 
-public class ThinksServiceImpl implements Service {
+public class ThinksServiceImpl implements ThinksService {
 
-	//Inyección de dependecias (crea una instancia cuando lo requiera)
 	@Autowired
-	private Repository productRepository;
+	private ThinksRepository thinksRepository;
 
 	@Override
-	public Product createProduct(Product product) {
-		return productRepository.save(product);
+	public Thinks neww(Thinks thinks) {
+		return thinksRepository.save(thinks);
 	}
 
 	@Override
-	public Product updateProduct(Product product) {
-		Optional<Product> productDb = this.productRepository.findById(product.getId());
+	public Thinks update(Thinks thinks) {
+		Optional<Thinks> thinksdb = this.thinksRepository.findById(thinks.getId());
 
-		if (productDb.isPresent()) {
-			Product productUpdate = productDb.get();
-			productUpdate.setId(product.getId());
-			productUpdate.setName(product.getName());
-			productUpdate.setDescription(product.getDescription());
-			productRepository.save(productUpdate);
-			return productUpdate;
+		if (thinksdb.isPresent()) {
+			Thinks thinksUpdate = thinksdb.get();
+			thinksUpdate.setId(thinks.getId());
+			thinksUpdate.setName(thinks.getName());
+			thinksRepository.save(thinksUpdate);
+			return thinksUpdate;
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + product.getId());
+			throw new ResourceNotFoundException("Record not found with id : " + thinks.getId());
 		}
 	}
 
 	@Override
-	public List<Product> getAllProduct() {
-		return this.productRepository.findAll();
+	public List<Thinks> getAll() {
+		return this.thinksRepository.findAll();
 	}
 
 	@Override
-	public Product getProductById(long productId) {
+	public Thinks getById(long thinksId) {
 
-		Optional<Product> productDb = this.productRepository.findById(productId);
+		Optional<Thinks> thinksdb = this.thinksRepository.findById(thinksId);
 
-		if (productDb.isPresent()) {
-			return productDb.get();
+		if (thinksdb.isPresent()) {
+			return thinksdb.get();
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + productId);
+			throw new ResourceNotFoundException("Record not found with id : " + thinksId);
 		}
 	}
 
 	@Override
-	public void deleteProduct(long productId) {
-		Optional<Product> productDb = this.productRepository.findById(productId);
+	public void deleteThinks(long thinksId) {
+		Optional<Thinks> thinksdb = this.thinksRepository.findById(thinksId);
 
-		if (productDb.isPresent()) {
-			this.productRepository.delete(productDb.get());
+		if (thinksdb.isPresent()) {
+			this.thinksRepository.delete(thinksdb.get());
 		} else {
-			throw new ResourceNotFoundException("Record not found with id : " + productId);
+			throw new ResourceNotFoundException("Record not found with id : " + thinksId);
 		}
 
 	}

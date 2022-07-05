@@ -15,39 +15,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.springboot.app.exception.Mensaje;
-import com.example.springboot.app.model.Product;
-import com.example.springboot.app.service.ProductService;
+//import com.example.springboot.app.exception.Mensaje;
+//import com.example.springboot.app.model.Product;
+//import com.example.springboot.app.service.ProductService;
+import com.examen_Luis_Angel_Glez.Examen.Model.Thinks;
+import com.examen_Luis_Angel_Glez.Examen.ThinksServiceImp.ThinksService;
+import com.examen_Luis_Angel_Glez.Examen.Exception.Mensaje;
+
 
 
 @RestController
 @RequestMapping("/Examen")
-public Controller {
+public ThinksController {
 
 	@Autowired
-	private Service service;
+	private	ThinksService thinksservice;
 
 	
 	@GetMapping("/Find_All")
 	public ResponseEntity<?> getAll() {
-		List<Tinks> lista = service.getAll();
+		List<Tinks> lista = thinksservice.getAll();
 		if(lista.isEmpty()){
 			return new ResponseEntity<>(new Mensaje("Sin cosas en la Base de Datos"), HttpStatus.BAD_REQUEST);
 		}
-		return ResponseEntity.ok().body(service.getAll());
+		return ResponseEntity.ok().body(thinksservice.getAll());
 	}
 
 
 	@GetMapping("/Find_By_id/{id}")
 	public ResponseEntity<Thinks> getbyId(@PathVariable long id) {
-		return ResponseEntity.ok().body(service.getbyId(id));
+		return ResponseEntity.ok().body(thinksservice.getbyId(id));
 	
 	}
 	
 	
 	@PostMapping("/New")
-	public ResponseEntity<Thinks> neww(@RequestBody Thinks thinks) {
-		return ResponseEntity.ok().body(this.service.neww(thinks));
+	public ResponseEntity<Thinks>neww(@RequestBody Thinks thinks) {
+		return ResponseEntity.ok().body(this.thinksservice.neww(thinks));
 	}
 	
 
@@ -55,14 +59,13 @@ public Controller {
 	@PutMapping("/Update/{id}")
 	public ResponseEntity<Thinks> update(@PathVariable long id, @RequestBody Thinks thinks) {
 		thinks.setId(id);
-		return ResponseEntity.ok().body(this.service.update(thinks));
+		return ResponseEntity.ok().body(this.thinksservice.update(thinks));
 	}
 
 	
 	@DeleteMapping("/Delete/{id}")
 	public HttpStatus delete(@PathVariable long id) {
-		this.service.delete(id);
+		this.thinksservice.delete(id);
 		return HttpStatus.OK;
 	}
-}
 }
