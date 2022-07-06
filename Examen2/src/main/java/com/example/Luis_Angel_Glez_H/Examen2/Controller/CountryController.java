@@ -24,14 +24,14 @@ import com.example.Luis_Angel_Glez_H.Examen2.Exception.Mensaje;
 
 
 @RestController
-@RequestMapping("/Examen2")
+@RequestMapping("/Examen2Country")
 public class CountryController {
 
 	@Autowired
 	private	CountryService countryservice;
 
 	
-	@GetMapping("/Find_All")
+	@GetMapping("/Find_AllCountry")
 	public ResponseEntity<?> getAll() {
 		List<Country> lista = countryservice.getAll();
 		if(lista.isEmpty()){
@@ -41,28 +41,28 @@ public class CountryController {
 	}
 
 
-	@GetMapping("/Find_By_id/{id}")
+	@GetMapping("/Find_By_id_Country/{id}")
 	public ResponseEntity<Country> getbyId(@PathVariable long id) {
 		return ResponseEntity.ok().body(countryservice.getById(id));
 	
 	}
 	
 	
-	@PostMapping("/New")
+	@PostMapping("/NewCountry")
 	public ResponseEntity<Country>neww(@RequestBody Country country) {
 		return ResponseEntity.ok().body(this.countryservice.neww(country));
 	}
 	
 
 
-	@PutMapping("/Update/{id}")
+	@PutMapping("/UpdateCountry/{id}")
 	public ResponseEntity<Country> update(@PathVariable long id, @RequestBody Country country) {
 		country.setId(id);
 		return ResponseEntity.ok().body(this.countryservice.update(country));
 	}
 
 	
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/DeleteCountry/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		this.countryservice.deleteCountry(id);
 		return HttpStatus.OK;

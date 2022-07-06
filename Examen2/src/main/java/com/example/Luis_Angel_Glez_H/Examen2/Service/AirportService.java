@@ -3,7 +3,7 @@ package com.example.Luis_Angel_Glez_H.Examen2.Service;
 import java.util.List;
 
 import com.example.Luis_Angel_Glez_H.Examen2.Model.Airport;
-public interface EmployeeService {
+public interface AirportService {
 
 
 	Airport neww(Airport airport);

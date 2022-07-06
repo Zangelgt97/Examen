@@ -28,12 +28,11 @@ public class AirportServiceImpl implements AirportService {
 	@Override
 	public Airport update(Airport airport) {
 		Optional<Airport> employeedb = this.airportRepository.findById(airport.getId());
-        #gettes and setters
+        //gettes and setters
 		if (employeedb.isPresent()) {
 			Airport airportUpdate = employeedb.get();
 			airportUpdate.setId(airport.getId());
-			airportUpdate.setFirstname(airport.getFirstname());
-			airportUpdate.setSurname(airport.getSurname());
+			airportUpdate.setName(airport.getName());
 			airportRepository.save(airportUpdate);
 			return airportUpdate;
 		} else {

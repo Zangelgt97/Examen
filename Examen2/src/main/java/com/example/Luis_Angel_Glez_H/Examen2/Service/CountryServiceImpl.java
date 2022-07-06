@@ -15,7 +15,7 @@ import com.example.Luis_Angel_Glez_H.Examen2.Exception.ResourceNotFoundException
 
 @Service 
 @Transactional 
-public class EmployeeServiceImpl implements CountryService {
+public class CountryServiceImpl implements CountryService {
 
 	@Autowired
 	private CountryRepository countryRepository;
@@ -32,8 +32,8 @@ public class EmployeeServiceImpl implements CountryService {
 		if (employeedb.isPresent()) {
 			Country countryUpdate = employeedb.get();
 			countryUpdate.setId(country.getId());
-			countryUpdate.setFirstname(country.getFirstname());
-			countryUpdate.setSurname(country.getSurname());
+			countryUpdate.setCode(country.getCode());
+			countryUpdate.setName(country.getName());
 			countryRepository.save(countryUpdate);
 			return countryUpdate;
 		} else {

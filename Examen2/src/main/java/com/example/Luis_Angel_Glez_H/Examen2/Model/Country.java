@@ -16,18 +16,14 @@ import javax.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(name="language")
-public class Language {
+@Table(name="country")
+public class Country {
 	@Id //Llave primaria de la tabla
 	@GeneratedValue(strategy = GenerationType.AUTO) //Se le indica que el campo ID es Autonumerico
 	private long id;
 
 	@Column(name = "code")
 	private String code;
-	
-	@Column(name = "name")
-	private String name;
-
 	
 	public long getId() {
 		return id;
@@ -46,13 +42,18 @@ public class Language {
 	}
 
 	public String getName() {
-		return name;	
+		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Column(name = "name")
+	private String name;
 
+	
+	
+	
 
 }

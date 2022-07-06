@@ -24,14 +24,14 @@ import com.example.Luis_Angel_Glez_H.Examen2.Exception.Mensaje;
 
 
 @RestController
-@RequestMapping("/Examen2")
+@RequestMapping("/Examen2Language")
 public class LanguageController {
 
 	@Autowired
 	private	LanguageService languageservice;
 
 	
-	@GetMapping("/Find_All")
+	@GetMapping("/Find_AllLanguage")
 	public ResponseEntity<?> getAll() {
 		List<Language> lista = languageservice.getAll();
 		if(lista.isEmpty()){
@@ -41,30 +41,30 @@ public class LanguageController {
 	}
 
 
-	@GetMapping("/Find_By_id/{id}")
+	@GetMapping("/Find_By_id_Language/{id}")
 	public ResponseEntity<Language> getbyId(@PathVariable long id) {
 		return ResponseEntity.ok().body(languageservice.getById(id));
 	
 	}
 	
 	
-	@PostMapping("/New")
+	@PostMapping("/NewLanguage")
 	public ResponseEntity<Language>neww(@RequestBody Language language) {
 		return ResponseEntity.ok().body(this.languageservice.neww(language));
 	}
 	
 
 
-	@PutMapping("/Update/{id}")
+	@PutMapping("/UpdateLanguage/{id}")
 	public ResponseEntity<Language> update(@PathVariable long id, @RequestBody Language language) {
 		language.setId(id);
 		return ResponseEntity.ok().body(this.languageservice.update(language));
 	}
 
 	
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/DeleteLanguage/{id}")
 	public HttpStatus delete(@PathVariable long id) {
-		this.languageservice.deleteLanguage(id);
+		this.languageservice.deleteLanguaje(id);
 		return HttpStatus.OK;
 	}
 }

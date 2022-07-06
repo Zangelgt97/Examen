@@ -32,8 +32,8 @@ public class LanguageServiceImpl implements LanguageService {
 		if (employeedb.isPresent()) {
 			Language languageUpdate = employeedb.get();
 			languageUpdate.setId(language.getId());
-			languageUpdate.setFirstname(language.getFirstname());
-			languageUpdate.setSurname(language.getSurname());
+			languageUpdate.setCode(language.getCode());
+			languageUpdate.setName(language.getName());
 			languageRepository.save(languageUpdate);
 			return languageUpdate;
 		} else {
@@ -59,7 +59,7 @@ public class LanguageServiceImpl implements LanguageService {
 	}
 
 	@Override
-	public void deleteLanguage(long languageId) {
+	public void deleteLanguaje(long languageId) {
 		Optional<Language> employeedb = this.languageRepository.findById(languageId);
 
 		if (employeedb.isPresent()) {

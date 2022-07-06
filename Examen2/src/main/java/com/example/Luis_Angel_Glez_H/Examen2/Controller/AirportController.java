@@ -24,14 +24,14 @@ import com.example.Luis_Angel_Glez_H.Examen2.Exception.Mensaje;
 
 
 @RestController
-@RequestMapping("/Examen2")
+@RequestMapping("/Examen2Airport")
 public class AirportController {
 
 	@Autowired
 	private	AirportService airportservice;
 
 	
-	@GetMapping("/Find_All")
+	@GetMapping("/Find_AllAirport")
 	public ResponseEntity<?> getAll() {
 		List<Airport> lista = airportservice.getAll();
 		if(lista.isEmpty()){
@@ -41,28 +41,28 @@ public class AirportController {
 	}
 
 
-	@GetMapping("/Find_By_id/{id}")
+	@GetMapping("/Find_By_id_Airport/{id}")
 	public ResponseEntity<Airport> getbyId(@PathVariable long id) {
 		return ResponseEntity.ok().body(airportservice.getById(id));
 	
 	}
 	
 	
-	@PostMapping("/New")
+	@PostMapping("/NewAirport")
 	public ResponseEntity<Airport>neww(@RequestBody Airport airport) {
 		return ResponseEntity.ok().body(this.airportservice.neww(airport));
 	}
 	
 
 
-	@PutMapping("/Update/{id}")
+	@PutMapping("/UpdateAirport/{id}")
 	public ResponseEntity<Airport> update(@PathVariable long id, @RequestBody Airport airport) {
 		airport.setId(id);
 		return ResponseEntity.ok().body(this.airportservice.update(airport));
 	}
 
 	
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/DeleteAirport/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		this.airportservice.deleteAirport(id);
 		return HttpStatus.OK;

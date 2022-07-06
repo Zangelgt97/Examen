@@ -3,7 +3,7 @@ package com.example.Luis_Angel_Glez_H.Examen2.Service;
 import java.util.List;
 
 import com.example.Luis_Angel_Glez_H.Examen2.Model.Language;
-public interface EmployeeService {
+public interface LanguageService {
 
 
 	Language neww(Language language);

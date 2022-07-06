@@ -24,14 +24,14 @@ import com.example.Luis_Angel_Glez_H.Examen2.Exception.Mensaje;
 
 
 @RestController
-@RequestMapping("/Examen2")
+@RequestMapping("/Examen2Employee")
 public class EmployeeController {
 
 	@Autowired
 	private	EmployeeService employeeservice;
 
 	
-	@GetMapping("/Find_All")
+	@GetMapping("/Find_AllEmployee")
 	public ResponseEntity<?> getAll() {
 		List<Employee> lista = employeeservice.getAll();
 		if(lista.isEmpty()){
@@ -41,28 +41,28 @@ public class EmployeeController {
 	}
 
 
-	@GetMapping("/Find_By_id/{id}")
+	@GetMapping("/Find_By_id_Employee/{id}")
 	public ResponseEntity<Employee> getbyId(@PathVariable long id) {
 		return ResponseEntity.ok().body(employeeservice.getById(id));
 	
 	}
 	
 	
-	@PostMapping("/New")
+	@PostMapping("/NewEmployee")
 	public ResponseEntity<Employee>neww(@RequestBody Employee employee) {
 		return ResponseEntity.ok().body(this.employeeservice.neww(employee));
 	}
 	
 
 
-	@PutMapping("/Update/{id}")
+	@PutMapping("/UpdateEmployee/{id}")
 	public ResponseEntity<Employee> update(@PathVariable long id, @RequestBody Employee employee) {
 		employee.setId(id);
 		return ResponseEntity.ok().body(this.employeeservice.update(employee));
 	}
 
 	
-	@DeleteMapping("/Delete/{id}")
+	@DeleteMapping("/DeleteEmployee/{id}")
 	public HttpStatus delete(@PathVariable long id) {
 		this.employeeservice.deleteEmployee(id);
 		return HttpStatus.OK;
