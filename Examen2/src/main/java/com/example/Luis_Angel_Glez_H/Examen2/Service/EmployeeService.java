@@ -6,10 +6,10 @@ import com.example.Luis_Angel_Glez_H.Examen2.Model.Employee;
 public interface EmployeeService {
 
 
-	Employee neww(Employee thinks);
+	Employee neww(Employee employee);
 
 	
-	Employee update(Employee thinks);
+	Employee update(Employee employee);
 	
 	
 	List<Employee> getAll();

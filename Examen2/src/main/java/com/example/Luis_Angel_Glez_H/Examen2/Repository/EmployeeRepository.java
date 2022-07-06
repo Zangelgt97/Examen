@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.Luis_Angel_Glez_H.Examen2.Model.Employee;
 
-//import com.example.springboot.app.model.Product;
+
 
 //Notación para indicar que es un repositorio
 @Repository
